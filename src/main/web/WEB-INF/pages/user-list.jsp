@@ -25,13 +25,13 @@
             <td>${user.email}</td>
             <td>
                 <!-- Кнопка редактирования -->
-                <form action="/users/edit" method="get" style="display:inline;">
+                <form action="/edit" method="get" style="display:inline;">
                     <input type="hidden" name="id" value="${user.id}" />
                     <input type="submit" value="Редактировать" />
                 </form>
 
                 <!-- Кнопка удаления -->
-                <form action="/users/delete" method="post" style="display:inline;" onsubmit="return confirm('Вы уверены, что хотите удалить пользователя?');">
+                <form action="/delete" method="post" style="display:inline;" onsubmit="return confirm('Вы уверены, что хотите удалить пользователя?');">
                     <input type="hidden" name="id" value="${user.id}" />
                     <input type="submit" value="Удалить" />
                 </form>
@@ -42,7 +42,7 @@
 </table>
 
 <br/>
-<form action="/users/new" method="get">
+<form action="/new" method="get">
     <input type="submit" value="Добавить нового пользователя"/>
 </form>
 

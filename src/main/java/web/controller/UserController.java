@@ -11,7 +11,6 @@ import web.model.User;
 import web.service.UserService;
 
 @Controller
-@RequestMapping("/users")
 public class UserController {
     private final UserService userService;
 
@@ -40,14 +39,22 @@ public class UserController {
         userService.deleteUser(id);
         return "redirect:/";
     }
-
     @PostMapping("/edit")
-    public String editUser(@RequestParam Long id, @RequestParam String name, @RequestParam String email) {
+    public String updateUser(@RequestParam Long id,
+                             @RequestParam String name,
+                             @RequestParam String email) {
         User user = userService.getUser(id);
         user.setName(name);
         user.setEmail(email);
         userService.updateUser(user);
         return "redirect:/";
+    }
+
+    @GetMapping("/edit")
+    public String editUser(@RequestParam("id") Long id, Model model) {
+        User user = userService.getUser(id);
+        model.addAttribute("user", user);
+        return "user-form";
     }
     @GetMapping("/new")
     public String showAddForm() {
