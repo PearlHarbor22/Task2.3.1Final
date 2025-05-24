@@ -43,7 +43,8 @@ public class AppConfig {
       jpaProperties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
       jpaProperties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
       jpaProperties.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
-
+      jpaProperties.put("hibernate.format_sql", "true");
+      jpaProperties.put("hibernate.use_sql_comments", "true");
       factoryBean.setJpaProperties(jpaProperties);
 
       return factoryBean;

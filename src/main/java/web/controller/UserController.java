@@ -20,7 +20,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public String getAllUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
         return "user-list";
@@ -48,5 +48,9 @@ public class UserController {
         user.setEmail(email);
         userService.updateUser(user);
         return "redirect:/";
+    }
+    @GetMapping("/new")
+    public String showAddForm() {
+        return "user-form";
     }
 }
